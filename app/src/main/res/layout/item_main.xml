@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.funckyhacker.capogithubviewer.model.User"
+            />
+
+        <variable
+            name="viewHolder"
+            type="com.funckyhacker.capogithubviewer.view.MainAdapter.ViewHolder"
+            />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:onClick="@{() -> viewHolder.onClickItem()}"
+        >
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/view_size_small"
+            android:layout_height="@dimen/view_size_small"
+            android:layout_marginStart="@dimen/element_spacing_large"
+            android:layout_marginTop="@dimen/element_spacing_large"
+            android:layout_marginBottom="@dimen/element_spacing_large"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/ic_launcher_background"
+            />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="User name"
+            android:layout_marginStart="@dimen/element_spacing_large"
+            android:layout_marginTop="@dimen/element_spacing_normal"
+            android:layout_marginEnd="@dimen/element_spacing_normal"
+            android:textSize="@dimen/text_size_medium"
+            android:ellipsize="end"
+            android:maxLines="2"
+            app:layout_constraintStart_toEndOf="@+id/icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/date"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="test.jpg"
+            />
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/icon"
+            android:layout_marginBottom="8dp"
+            android:text="User ID"
+            android:textColor="#222222"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="Jan 22, 1970"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
+
