@@ -7,10 +7,17 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.funckyhacker.capogithubviewer.R
 import com.funckyhacker.capogithubviewer.databinding.ActivityMainBinding
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainView {
 
-    private lateinit var binding: ActivityMainBinding
+    @Inject
+    lateinit var viewModel: MainViewModel
+
+    private val binding: ActivityMainBinding by lazy {
+        DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+    }
 
     private val linearLayoutManager: LinearLayoutManager by lazy {
         LinearLayoutManager(this)
@@ -21,20 +28,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        AndroidInjection.inject(this)
         //Toolbar
         setSupportActionBar(binding.toolBar)
         val actionbar = supportActionBar
         actionbar!!.setDisplayHomeAsUpEnabled(true)
         actionbar.setHomeButtonEnabled(true)
-
         initList()
+        viewModel.init(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAllList()
+    }
+
+    override fun setAdapter(adapter: MainAdapter) {
+        binding.listView.adapter = adapter
     }
 
     private fun initList() {
         binding.listView.layoutManager = linearLayoutManager
-//        binding.listView.adapter = viewModel.linearAdapter
         binding.listView.addItemDecoration(dividerItemDecoration)
-        binding.listView.adapter = null
     }
 }

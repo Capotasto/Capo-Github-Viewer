@@ -3,10 +3,15 @@ package com.funckyhacker.capogithubviewer.network
 import com.funckyhacker.capogithubviewer.model.User
 import io.reactivex.Single
 import retrofit2.Retrofit
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class GithubRepository(retrofit: Retrofit) {
+@Singleton
+class GithubRepository @Inject constructor(retrofit: Retrofit) {
 
-    private val api: GithubApi = retrofit.create(GithubApi::class.java)
+    private val api: GithubApi by lazy {
+        retrofit.create(GithubApi::class.java)
+    }
 
     fun users(sinceId: String): Single<List<User>> {
         return api.users(sinceId)

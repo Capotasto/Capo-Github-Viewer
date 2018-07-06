@@ -1,3 +1,26 @@
 package com.funckyhacker.capogithubviewer.view
 
-class MainViewModelImpl : MainViewModel()
+import com.funckyhacker.capogithubviewer.network.GithubRepository
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
+import javax.inject.Inject
+
+class MainViewModelImpl @Inject constructor(private val repository: GithubRepository) : MainViewModel() {
+
+    private lateinit var view: MainView
+    private lateinit var adapter: MainAdapter
+
+    override fun init(view: MainView) {
+        this.view = view
+        this.adapter = MainAdapter()
+        view.setAdapter(adapter)
+    }
+
+    override fun getAllList() {
+        repository.users("135")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { t -> Timber.d(t.toString())}
+    }
+}
