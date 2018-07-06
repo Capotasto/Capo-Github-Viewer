@@ -2,15 +2,21 @@ package com.funckyhacker.capogithubviewer.view
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.funckyhacker.capogithubviewer.R
 import com.funckyhacker.capogithubviewer.databinding.ActivityMainBinding
+import com.funckyhacker.capogithubviewer.event.ClickItemEvent
+import com.trello.rxlifecycle2.LifecycleTransformer
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import dagger.android.AndroidInjection
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), MainView {
+class MainActivity : RxAppCompatActivity(), MainView {
 
     @Inject
     lateinit var viewModel: MainViewModel
@@ -38,17 +44,42 @@ class MainActivity : AppCompatActivity(), MainView {
         viewModel.init(this)
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.getAllList()
-    }
-
     override fun setAdapter(adapter: MainAdapter) {
         binding.listView.adapter = adapter
+    }
+
+    override fun <T> getRxLifecycle(): LifecycleTransformer<T> {
+        return bindToLifecycle()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    public override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe
+    fun onClickItemEvent(event: ClickItemEvent) {
+        Timber.i("Item Click %s", event.user.id)
     }
 
     private fun initList() {
         binding.listView.layoutManager = linearLayoutManager
         binding.listView.addItemDecoration(dividerItemDecoration)
+        binding.listView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val totalCount = recyclerView.adapter.itemCount//The number of item in adapter
+                val childCount = recyclerView.childCount //The number of item which is shown on RecyclerView
+                val firstPosition = linearLayoutManager.findFirstVisibleItemPosition() // The fist position of RecyclerView
+                if (totalCount == childCount + firstPosition) {
+                    // Paging
+                    viewModel.getList(viewModel.getLastId())
+                }
+            }
+        })
     }
 }

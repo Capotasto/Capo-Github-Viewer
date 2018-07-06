@@ -13,7 +13,7 @@ class GithubRepository @Inject constructor(retrofit: Retrofit) {
         retrofit.create(GithubApi::class.java)
     }
 
-    fun users(sinceId: String): Single<List<User>> {
+    fun users(sinceId: Int): Single<List<User>> {
         return api.users(sinceId)
     }
 

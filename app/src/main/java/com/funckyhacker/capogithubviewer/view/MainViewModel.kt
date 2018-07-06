@@ -6,5 +6,7 @@ abstract class MainViewModel : BaseObservable() {
 
     abstract fun init(view: MainView)
 
-    abstract fun getAllList()
+    abstract fun getList(id: Int)
+
+    abstract fun getLastId(): Int
 }

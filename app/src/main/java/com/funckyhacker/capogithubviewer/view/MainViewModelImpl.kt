@@ -15,12 +15,22 @@ class MainViewModelImpl @Inject constructor(private val repository: GithubReposi
         this.view = view
         this.adapter = MainAdapter()
         view.setAdapter(adapter)
+        getList(0)
     }
 
-    override fun getAllList() {
-        repository.users("135")
+    override fun getList(id: Int) {
+        repository.users(id)
+                .compose(view.getRxLifecycle())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { t -> Timber.d(t.toString())}
+                .subscribe(
+                        {list -> adapter.setData(list)},
+                        {e -> Timber.w(e)}
+                )
+    }
+
+    override fun getLastId(): Int {
+        val user = adapter.getLastItem() ?: return 0
+        return user.id
     }
 }

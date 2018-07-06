@@ -20,6 +20,7 @@
     <dimen name="view_size_normal">48dp</dimen>
     <dimen name="view_size_small">36dp</dimen>
     <dimen name="view_size_tiny">24dp</dimen>
+    <dimen name="view_size_xtiny">12dp</dimen>
 
     <!-- Text Size -->
     <dimen name="text_size_xxxlarge">28sp</dimen>

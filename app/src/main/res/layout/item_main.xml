@@ -32,44 +32,28 @@
             android:layout_marginStart="@dimen/element_spacing_large"
             android:layout_marginTop="@dimen/element_spacing_large"
             android:layout_marginBottom="@dimen/element_spacing_large"
-            android:src="@drawable/ic_launcher_background"
+            app:imageUrl="@{user.avatarUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:src="@drawable/ic_launcher_background"
+            tools:src="@drawable/ic_github"
             />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/id"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="User name"
             android:layout_marginStart="@dimen/element_spacing_large"
-            android:layout_marginTop="@dimen/element_spacing_normal"
-            android:layout_marginEnd="@dimen/element_spacing_normal"
+            android:layout_marginEnd="@dimen/element_spacing_large"
+            android:text="@{user.login}"
             android:textSize="@dimen/text_size_medium"
             android:ellipsize="end"
-            android:maxLines="2"
+            android:maxLines="1"
             app:layout_constraintStart_toEndOf="@+id/icon"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/date"
+            app:layout_constraintTop_toTopOf="@+id/icon"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/icon"
             tools:text="test.jpg"
-            />
-
-
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/icon"
-            android:layout_marginBottom="8dp"
-            android:text="User ID"
-            android:textColor="#222222"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/title"
-            app:layout_constraintTop_toBottomOf="@+id/title"
-            tools:text="Jan 22, 1970"
             />
 
     </android.support.constraint.ConstraintLayout>

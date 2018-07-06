@@ -4,84 +4,85 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 27
-    defaultConfig {
-        applicationId "com.funckyhacker.capogithubviewer"
-        minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
+  compileSdkVersion 27
+  defaultConfig {
+    applicationId "com.funckyhacker.capogithubviewer"
+    minSdkVersion 21
+    targetSdkVersion 27
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
 
-    dataBinding {
-        enabled = true
-    }
+  dataBinding {
+    enabled = true
+  }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 }
 
 ext {
-    supportLibVersion = '27.1.1'
-    rxLifecycleVersion = '2.2.1'
-    retrofitVersion = '2.3.0'
-    okhttpVersion = '3.9.1'
-    daggerVersion = '2.15'
-    glideVersion = '4.7.1'
+  supportLibVersion = '27.1.1'
+  rxLifecycleVersion = '2.2.1'
+  retrofitVersion = '2.3.0'
+  okhttpVersion = '3.9.1'
+  daggerVersion = '2.15'
+  glideVersion = '4.7.1'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$supportLibVersion"
-    implementation "com.android.support:design:$supportLibVersion"
-    implementation "com.android.support:support-annotations:$supportLibVersion"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  implementation "com.android.support:appcompat-v7:$supportLibVersion"
+  implementation "com.android.support:design:$supportLibVersion"
+  implementation "com.android.support:support-annotations:$supportLibVersion"
+  implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 
-    // Network
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
-    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+  // Network
+  implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+  implementation "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
+  implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+  implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+  implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+  implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
 
-    //Rx
-    implementation "io.reactivex.rxjava2:rxjava:2.1.16"
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation "com.trello.rxlifecycle2:rxlifecycle:$rxLifecycleVersion"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-android:$rxLifecycleVersion"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycleVersion"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxLifecycleVersion"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$rxLifecycleVersion"
+  //Rx
+  implementation "io.reactivex.rxjava2:rxjava:2.1.16"
+  implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+  implementation "com.trello.rxlifecycle2:rxlifecycle:$rxLifecycleVersion"
+  implementation "com.trello.rxlifecycle2:rxlifecycle-android:$rxLifecycleVersion"
+  implementation "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycleVersion"
+  implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxLifecycleVersion"
+  implementation "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$rxLifecycleVersion"
 
-    //Dagger
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+  //Dagger
+  implementation "com.google.dagger:dagger:$daggerVersion"
+  implementation "com.google.dagger:dagger-android:$daggerVersion"
+  implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+  kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+  kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
-    // Timber
-    implementation 'com.jakewharton.timber:timber:4.6.0'
-    // Gson
-    implementation 'com.google.code.gson:gson:2.8.4'
-    // Glide
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
-    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+  // Timber
+  implementation 'com.jakewharton.timber:timber:4.6.0'
+  // Gson
+  implementation 'com.google.code.gson:gson:2.8.4'
+  // Glide
+  implementation "com.github.bumptech.glide:glide:$glideVersion"
+  kapt "com.github.bumptech.glide:compiler:$glideVersion"
+  //EventBus
+  implementation 'org.greenrobot:eventbus:3.1.1'
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+  testImplementation 'junit:junit:4.12'
+  androidTestImplementation 'com.android.support.test:runner:1.0.2'
+  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

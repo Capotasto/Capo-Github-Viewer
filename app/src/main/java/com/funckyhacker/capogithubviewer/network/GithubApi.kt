@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface GithubApi {
 
     @GET("/users")
-    fun users(@Query("since") sinceId: String): Single<List<User>>
+    fun users(@Query("since") sinceId: Int): Single<List<User>>
 
     @GET("/users/{username}")
     fun user(@Path("username") username: String): Single<User>
