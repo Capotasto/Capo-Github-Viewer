@@ -10,6 +10,6 @@ object BindingAdapters {
     @JvmStatic
     @BindingAdapter("imageUrl")
     fun setImageUrl(imageView: ImageView, imageUrl: String) {
-        GlideApp.with(imageView.context).load(imageUrl).placeholder(R.drawable.ic_github).into(imageView)
+        GlideApp.with(imageView.context).load(imageUrl).fallback(R.drawable.ic_github).into(imageView)
     }
 }
