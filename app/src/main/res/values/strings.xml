@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CapoGithubViewer</string>
+    <string name="label_followers">Followers</string>
+    <string name="label_following">Following</string>
+    <string name="label_repos">Repository</string>
+    <string name="label_gists">Gists</string>
+    <string name="label_company">Company</string>
+    <string name="label_blog">Blog</string>
 </resources>

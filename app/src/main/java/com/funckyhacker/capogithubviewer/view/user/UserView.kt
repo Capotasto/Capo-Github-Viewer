@@ -1,10 +1,8 @@
-package com.funckyhacker.capogithubviewer.view
+package com.funckyhacker.capogithubviewer.view.user
 
 import com.trello.rxlifecycle2.LifecycleTransformer
 
-interface MainView {
-    fun setAdapter(adapter: MainAdapter)
+interface UserView {
 
     fun <T> getRxLifecycle(): LifecycleTransformer<T>
-
 }

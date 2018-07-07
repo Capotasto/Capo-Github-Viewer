@@ -8,12 +8,12 @@ import android.support.v7.widget.RecyclerView
 import com.funckyhacker.capogithubviewer.R
 import com.funckyhacker.capogithubviewer.databinding.ActivityMainBinding
 import com.funckyhacker.capogithubviewer.event.ClickItemEvent
+import com.funckyhacker.capogithubviewer.view.user.UserActivity
 import com.trello.rxlifecycle2.LifecycleTransformer
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import dagger.android.AndroidInjection
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : RxAppCompatActivity(), MainView {
@@ -64,7 +64,7 @@ class MainActivity : RxAppCompatActivity(), MainView {
 
     @Subscribe
     fun onClickItemEvent(event: ClickItemEvent) {
-        Timber.i("Item Click %s", event.user.id)
+        startActivity(UserActivity.createIntent(this, event.user.login))
     }
 
     private fun initList() {

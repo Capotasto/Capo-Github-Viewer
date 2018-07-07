@@ -12,7 +12,8 @@ import timber.log.Timber
 import javax.inject.Singleton
 
 @Module(subcomponents = [
-    (MainComponent::class)
+    (MainComponent::class),
+    (UserComponent::class)
 ])
 class AppModule {
     companion object {
