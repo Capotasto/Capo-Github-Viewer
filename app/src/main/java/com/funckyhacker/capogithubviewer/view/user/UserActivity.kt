@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.view.MenuItem
 import com.funckyhacker.capogithubviewer.R
 import com.funckyhacker.capogithubviewer.databinding.ActivityUserBinding
 import com.trello.rxlifecycle2.LifecycleTransformer
@@ -39,6 +40,17 @@ class UserActivity : RxAppCompatActivity(), UserView {
         viewModel.init(this, login)
         binding.viewModel = viewModel
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     override fun <T> getRxLifecycle(): LifecycleTransformer<T> {
         return bindToLifecycle()
