@@ -12,6 +12,7 @@ A simple, easy and ligth Github User Viewer
 - MVVM
 - Data Binding
 - Binding Adapter 
+- ConstraintLayout
 - Rxjava and RxAndroid for API Call
 
 ## Third party library
