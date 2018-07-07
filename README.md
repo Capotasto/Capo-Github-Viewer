@@ -6,8 +6,7 @@ A simple, easy and ligth Github User Viewer
 
 |User List|Details|
 |---|---|
-|![TOP](https://raw.githubusercontent.com/Capotasto/Capo-Github-Viewer/screen-shot/screen/device-2018-07-07-154746.png "")
-|![TOP](https://raw.githubusercontent.com/Capotasto/Capo-Github-Viewer/screen-shot/screen/device-2018-07-07-154919.png "")|
+|![TOP](https://raw.githubusercontent.com/Capotasto/Capo-Github-Viewer/screen-shot/screen/device-2018-07-07-154746.png "")|![TOP](https://raw.githubusercontent.com/Capotasto/Capo-Github-Viewer/screen-shot/screen/device-2018-07-07-154919.png "")|
 ## Tech Note
 - Kolin
 - MVVM
